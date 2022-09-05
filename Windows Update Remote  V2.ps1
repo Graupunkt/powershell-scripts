@@ -58,10 +58,10 @@ function Install-WUonServers{
                     Write-Host -ForegroundColor Green "Currently processing the following update: (waiting 20mins for timeout)"
                     Get-Content \\$pc\c$\PSWindowsUpdate.log | select-object -last 1
                     Start-Sleep -Seconds 10
-                    $ErrorActionPreference = ‘SilentlyContinue’
+                    $ErrorActionPreference = â€˜SilentlyContinueâ€™
                     $installednumber = ([regex]::Matches($updatestatus, "Installed" )).count
                     $Failednumber = ([regex]::Matches($updatestatus, "Failed" )).count
-                    $ErrorActionPreference = ‘Continue’
+                    $ErrorActionPreference = â€˜Continueâ€™
                     $updatetimeout++
                 }until ( ($installednumber + $Failednumber) -eq $updatenumber -or $updatetimeout -ge 720)
                 #restarts the remote computer and waits till it starts up again
@@ -80,5 +80,8 @@ function Install-WUonServers{
     }
 }
 
-$servers = @("ubiquiti.tepe.local","ubiquiti.tepe.local")
+$servers = @(
+        "TS1",
+        "TS2"
+        )
 Install-WUonServers -Computer $servers
