@@ -1,4 +1,6 @@
 # Windows Update Remote
+![screenshot of the script performing updates](Windows Update Script - Screenshot2.JPG)
+
 allows to execute updates on multiple computers, only one computer is processed at any time
 uses/installs Powershell modul PSWindowsUpdate to check and perform updates
 detects updates on the regarding computer and installs them
